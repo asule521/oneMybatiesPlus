@@ -1,0 +1,70 @@
+server:
+  port: 8082
+spring:
+  thymeleaf:
+    mode: HTML
+    encoding: UTF-8
+    cach: false
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    druid:
+      #������Դ
+      master:
+        enabled: true
+        jdbc-url: jdbc:mysql://localhost:3306/tank1?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+        username: root
+        password: zxcvbnm123
+      #������Դ
+      slave:
+        enabled: true
+        jdbc-url: jdbc:mysql://localhost:3306/asule?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+        username: root
+        password: zxcvbnm123
+      # ��ʼ������
+      initialSize: 5
+      # ��С���ӳ�����
+      minIdle: 10
+      # ������ӳ�����
+      maxActive: 20
+      # ���û�ȡ���ӵȴ���ʱ��ʱ��
+      maxWait: 60000
+      # ���ü����òŽ���һ�μ�⣬�����Ҫ�رյĿ������ӣ���λ�Ǻ���
+      timeBetweenEvictionRunsMillis: 60000
+      # ����һ�������ڳ�����С�����ʱ�䣬��λ�Ǻ���
+      minEvictableIdleTimeMillis: 300000
+      # ����һ�������ڳ�����������ʱ�䣬��λ�Ǻ���
+      maxEvictableIdleTimeMillis: 900000
+      # ���ü�������Ƿ���Ч
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      webStatFilter:
+        enabled: true
+      statViewServlet:
+        enabled: true
+        # ���ð��������������������з���
+        allow:
+        url-pattern: /monitor/druid/*
+      filter:
+        stat:
+          enabled: true
+          # ��SQL��¼
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: true
+        wall:
+          config:
+            multi-statement-allow: true
+
+
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+

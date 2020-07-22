@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zjx.mapper.MybatiesMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+
+    <select id="selectitems" resultType="com.zjx.pojo.AgeUser">
+        select a.username,b.* from test_user a, age_user b where a.id=b.id
+    </select>
+    <select id="sql1" resultType="com.zjx.pojo.TestUser">
+        select * from test_user where id=#{id}
+    </select>
+</mapper>
