@@ -28,6 +28,7 @@ public class MybatesQueryWrapperImpl implements MybatesQueryWrapper{
         objectPage.setSize((Long) map.get("limit"));
         QueryWrapper<TestUser> objectQueryWrapper = new QueryWrapper<>();
         objectQueryWrapper.eq("username","张三");
+        System.out.println("111");
         IPage<TestUser> testUserIPage = mMybatesQueryWrapperMapper.selectPage(objectPage, objectQueryWrapper);
         return  testUserIPage;
 
